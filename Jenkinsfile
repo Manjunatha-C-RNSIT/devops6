@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   tools {
-    maven 'Maven 3.8.7'   // name from Global Tool Config
+    maven 'Maven 3.9'   // name from Global Tool Config
     jdk     'Java 11'
   }
 
