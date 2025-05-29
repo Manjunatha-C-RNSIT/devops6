@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"  
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.myorg.calculator</groupId>
+  <artifactId>calculator-maven-demo</artifactId>
+  <version>1.0.0</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <junit.jupiter.version>5.10.0</junit.jupiter.version>
+  </properties>
+
+  <dependencies>
+    <!-- JUnit 5 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- run JUnit 5 tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <useModulePath>false</useModulePath>
+        </configuration>
+      </plugin>
+
+      <!-- generate coverage reports -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.9</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals><goal>prepare-agent</goal></goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals><goal>report</goal></goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- checkstyle -->
+      <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>3.6.0</version>  <!-- valid, released Oct 22, 2024 -->
+      <executions>
+        <execution>
+          <id>validate</id>
+          <phase>validate</phase>
+          <goals>
+            <goal>check</goal>
+          </goals>
+        </execution>
+      </executions>
+      <configuration>
+        <configLocation>google_checks.xml</configLocation>
+        <consoleOutput>true</consoleOutput>
+        <failsOnError>true</failsOnError>
+      </configuration>
+    </plugin>
+    </plugins>
+  </build>
+</project>
+
