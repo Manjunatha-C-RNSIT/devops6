@@ -3,7 +3,7 @@ pipeline {
 
   tools {
     maven 'maven3.9'   // name from Global Tool Config
-    jdk     'Jdk'
+    jdk     'jdk'
   }
 
   stages {
